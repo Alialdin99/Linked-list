@@ -4,15 +4,7 @@
 
 #ifndef LINKED_LISTS_LINKED_LISTS_H
 #define LINKED_LISTS_LINKED_LISTS_H
-
-#endif //LINKED_LISTS_LINKED_LISTS_H
-
 using namespace std;
-
-
-
-//template <typename T>
-
 
 template <typename T>
 class linked_list
@@ -46,3 +38,5 @@ public:
 
 
 };
+#endif //LINKED_LISTS_LINKED_LISTS_H
+
