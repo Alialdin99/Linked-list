@@ -1,5 +1,19 @@
 # ninja log v5
-1	130	7009125658351374	build.ninja	f5c4425e2676c3ed
-5	417	7009110100034708	CMakeFiles/linked_lists.dir/linked_lists.cpp.obj	8e9ef5fc079ed871
-2	426	7009110515222132	CMakeFiles/linked_lists.dir/main.cpp.obj	5c55bc8870127d65
+1	130	7009231203220114	build.ninja	f5c4425e2676c3ed
+7	524	7009227520430423	CMakeFiles/linked_lists.dir/linked_lists.cpp.obj	85d004a8723d8e94
+3	569	7009227520899093	CMakeFiles/linked_lists.dir/main.cpp.obj	fa1d4f4c18551b5e
+2	1630	7009227926181250	CMakeFiles/linked_lists.dir/test.cpp.obj	7486714cabf8f033
 426	499	7009110515930242	linked_lists.exe	ee4051b69038ac7a
+2	76	7009231253948543	linked_lists.exe	ee4051b69038ac7a
+2	673	7009231542861390	CMakeFiles/linked_lists.dir/main.cpp.obj	fa1d4f4c18551b5e
+674	743	7009231543586359	linked_lists.exe	ee4051b69038ac7a
+2	379	7009231763564416	CMakeFiles/linked_lists.dir/main.cpp.obj	fa1d4f4c18551b5e
+379	450	7009231764189309	linked_lists.exe	ee4051b69038ac7a
+2	387	7009231842262862	CMakeFiles/linked_lists.dir/main.cpp.obj	fa1d4f4c18551b5e
+388	456	7009231842831629	linked_lists.exe	ee4051b69038ac7a
+2	407	7009235450087384	CMakeFiles/linked_lists.dir/main.cpp.obj	fa1d4f4c18551b5e
+7	416	7009235450187469	CMakeFiles/linked_lists.dir/linked_lists.cpp.obj	85d004a8723d8e94
+416	489	7009235450812367	linked_lists.exe	ee4051b69038ac7a
+2	397	7009235836547959	CMakeFiles/linked_lists.dir/main.cpp.obj	fa1d4f4c18551b5e
+6	411	7009235836628306	CMakeFiles/linked_lists.dir/linked_lists.cpp.obj	85d004a8723d8e94
+411	484	7009235837353300	linked_lists.exe	ee4051b69038ac7a

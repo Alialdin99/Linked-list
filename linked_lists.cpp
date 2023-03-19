@@ -1,6 +1,20 @@
 #include "linked_lists.h"
 #include <iostream>
 
+class EmptyListError : public std::exception {
+public:
+    const char* what() const noexcept override {
+        return "Cannot delete from an empty list";
+    }
+};
+
+class itemNotFound : public std::exception {
+public:
+    const char* what() const noexcept override {
+        return "The item doesn't exixt";
+    }
+};
+
 template<typename t>
 linked_list<t>::linked_list()
 {
@@ -126,12 +140,17 @@ void linked_list<T>::insertLast(T newValue)
 template<typename T>
 void linked_list<T>::deleteItem(T value)
 {
-    if (isEmpty() || !isFound(value)) {
-        cout << "The item doesn't exist or the list is empty" << endl;
-        return;
+    if (isEmpty())
+    {
+        throw EmptyListError();
+    }
+    if(!isFound(value))
+    {
+        throw itemNotFound();
     }
 
     node<T>* delPtr = head;
+
     if(head->data == value)
     {
         head = head->next;
