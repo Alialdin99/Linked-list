@@ -96,8 +96,7 @@ void linked_list<T>::insertBefore(T item, T newValue)
 {
     if(!isFound(item))
     {
-        cout<<"The item doesn't exist"<<endl;
-        return;
+       throw itemNotFound();
     }
 
     node<T>* newNode = new node<T>();
