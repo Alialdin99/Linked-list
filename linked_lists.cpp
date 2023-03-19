@@ -25,7 +25,7 @@ linked_list<t>::linked_list()
 template<typename T>
 bool linked_list<T>::isEmpty()
 {
-    return(head== nullptr);
+    return(head == nullptr);
 }
 
 template<typename T>
@@ -35,7 +35,7 @@ void linked_list<T>::display()
 
     while(temp != nullptr)
     {
-        cout<<temp->data<<' ';
+        cout<< temp->data <<' ';
         temp = temp->next;
     }
 
@@ -56,9 +56,8 @@ bool linked_list<T>::isFound(T key)
     while(temp != nullptr)
     {
         if(temp->data == key)
-        {
             return true;
-        }
+
         temp = temp->next;
     }
 
@@ -72,13 +71,9 @@ void linked_list<T>::insertFirst(T newValue)
     newNode->data = newValue;
 
     if (isEmpty())
-    {
         newNode->next = nullptr;
-    }
     else
-    {
         newNode->next = head;
-    }
 
     head = newNode;
     size++;
@@ -88,50 +83,38 @@ template<typename T>
 void linked_list<T>::insertBefore(T item, T newValue)
 {
     if (isEmpty())
-    {
         throw emptyListError();
-    }
-    if(!isFound(item))
-    {
-       throw itemNotFound();
-    }
 
+    if(!isFound(item))
+        throw itemNotFound();
 
     node* newNode = new node();
     node* temp = head;
 
-    while(temp->next->data != item && temp!= nullptr)
-    {
+    while(temp->next->data != item && temp != nullptr)
         temp = temp->next;
-    }
 
     newNode->data = newValue;
     newNode->next = temp->next;
     temp->next = newNode;
     size++;
-
 }
 
 template<typename T>
 void linked_list<T>::insertAfter(T item, T newValue)
 {
     if (isEmpty())
-    {
         throw emptyListError();
-    }
-    if(!isFound(item))
-    {
-        throw itemNotFound();
-    }
 
+    if(!isFound(item))
+        throw itemNotFound();
 
     node* newNode = new node();
     node* temp = head;
 
-    while(temp->next->data == item && temp!= nullptr)
-    {
+    while(temp->next->data == item && temp != nullptr)
         temp = temp->next;
-    }
+
 
     newNode->data = newValue;
     newNode->next = temp->next;
@@ -153,26 +136,24 @@ void linked_list<T>::insertLast(T newValue)
     node* temp = head;
 
     while(temp->next != nullptr)
-    {
         temp = temp->next;
-    }
 
     newNode->data = newValue;
     newNode->next = nullptr;
     temp->next = newNode;
     size++;
-
 }
 
 template<typename T>
 void linked_list<T>::deleteFirst()
 {
-    if(isEmpty()){throw emptyListError();}
+    if(isEmpty())
+        throw emptyListError();
 
-    node* delPtr = head;
+    node* delNode = head;
 
     head = head->next;
-    delete delPtr;
+    delete delNode;
     size--;
 }
 
@@ -180,15 +161,12 @@ template<typename T>
 void linked_list<T>::deleteItem(T value)
 {
     if (isEmpty())
-    {
         throw emptyListError();
-    }
-    if(!isFound(value))
-    {
-        throw itemNotFound();
-    }
 
-    node* delPtr = head;
+    if(!isFound(value))
+        throw itemNotFound();
+
+    node* delNode = head;
 
     if(head->data == value)
     {
@@ -199,14 +177,14 @@ void linked_list<T>::deleteItem(T value)
     {
         node* prev;
 
-        while(delPtr->data != value)
+        while(delNode->data != value)
         {
-            prev = delPtr;
-            delPtr = delPtr->next;
+            prev = delNode;
+            delNode = delNode->next;
         }
 
-        prev->next = delPtr->next;
-        delete delPtr;
+        prev->next = delNode->next;
+        delete delNode;
         size--;
 
     }
@@ -215,18 +193,20 @@ void linked_list<T>::deleteItem(T value)
 template<typename T>
 void linked_list<T>::deleteLast()
 {
-    if(isEmpty()){throw emptyListError();}
+    if(isEmpty())
+        throw emptyListError();
 
-    node* delPtr = head;
+    node* delNode = head;
     node* prev;
 
-    while(delPtr->next != nullptr)
+    while(delNode->next != nullptr)
     {
-        prev = delPtr;
-        delPtr = delPtr->next;
+        prev = delNode;
+        delNode = delNode->next;
     }
+
     prev->next = nullptr;
-    delete delPtr;
+    delete delNode;
     size--;
 
 }
@@ -234,21 +214,23 @@ void linked_list<T>::deleteLast()
 template<typename T>
 T linked_list<T>::getFirst()
 {
-    if(isEmpty()){throw emptyListError();}
+    if(isEmpty())
+        throw emptyListError();
+
     return (head->data);
 }
 
 template<typename T>
 T linked_list<T>::getLast()
 {
-    if(isEmpty()){throw emptyListError();}
+    if(isEmpty())
+        throw emptyListError();
 
     node* temp = head;
 
     while (temp->next != nullptr)
-    {
         temp = temp->next;
-    }
+
 
     return (temp->data);
 
