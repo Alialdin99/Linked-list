@@ -1,0 +1,3 @@
+D:/FCAI/Data structures/linked lists/cmake-build-debug/CMakeFiles/linked_lists.dir
+D:/FCAI/Data structures/linked lists/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/FCAI/Data structures/linked lists/cmake-build-debug/CMakeFiles/rebuild_cache.dir
