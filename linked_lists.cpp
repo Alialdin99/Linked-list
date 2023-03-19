@@ -1,7 +1,7 @@
 #include "linked_lists.h"
 #include <iostream>
 
-class EmptyListError : public std::exception {
+class emptyListError : public std::exception {
 public:
     const char* what() const noexcept override {
         return "Cannot delete from an empty list";
@@ -94,15 +94,47 @@ void linked_list<T>::insertFirst(T newValue)
 template<typename T>
 void linked_list<T>::insertBefore(T item, T newValue)
 {
+    if (isEmpty())
+    {
+        throw emptyListError();
+    }
     if(!isFound(item))
     {
        throw itemNotFound();
     }
 
+
     node<T>* newNode = new node<T>();
     node<T>* temp = head;
 
     while(temp->next->data != item && temp!= nullptr)
+    {
+        temp = temp->next;
+    }
+
+    newNode->data = newValue;
+    newNode->next = temp->next;
+    temp->next = newNode;
+
+}
+
+template<typename T>
+void linked_list<T>::insertAfter(T item, T newValue)
+{
+    if (isEmpty())
+    {
+        throw emptyListError();
+    }
+    if(!isFound(item))
+    {
+        throw itemNotFound();
+    }
+
+
+    node<T>* newNode = new node<T>();
+    node<T>* temp = head;
+
+    while(temp->next->data == item && temp!= nullptr)
     {
         temp = temp->next;
     }
@@ -137,11 +169,22 @@ void linked_list<T>::insertLast(T newValue)
 }
 
 template<typename T>
+void linked_list<T>::deleteFirst()
+{
+    if(isEmpty()){throw emptyListError();}
+
+    node<T>* delPtr = head;
+
+    head = head->next;
+    delete delPtr;
+}
+
+template<typename T>
 void linked_list<T>::deleteItem(T value)
 {
     if (isEmpty())
     {
-        throw EmptyListError();
+        throw emptyListError();
     }
     if(!isFound(value))
     {
@@ -152,8 +195,8 @@ void linked_list<T>::deleteItem(T value)
 
     if(head->data == value)
     {
-        head = head->next;
-        delete delPtr;
+        deleteFirst();
+        return;
     }
     else
     {
@@ -169,6 +212,48 @@ void linked_list<T>::deleteItem(T value)
         delete delPtr;
 
     }
+}
+
+template<typename T>
+void linked_list<T>::deleteLast()
+{
+    if(isEmpty()){throw emptyListError();}
+
+    node<T>* delPtr = head;
+    node<T>* prev;
+
+    while(delPtr->next != nullptr)
+    {
+        prev = delPtr;
+        delPtr = delPtr->next;
+    }
+
+   prev->next = nullptr;
+    delete delPtr;
+
+}
+
+template<typename T>
+T linked_list<T>::getFirst()
+{
+    if(isEmpty()){throw emptyListError();}
+    return (head->data);
+}
+
+template<typename T>
+T linked_list<T>::getLast()
+{
+    if(isEmpty()){throw emptyListError();}
+
+    node<T>* temp = head;
+
+    while (temp->next != nullptr)
+    {
+        temp = temp->next;
+    }
+
+    return (temp->data);
+
 }
 
 

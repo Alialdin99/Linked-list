@@ -30,14 +30,13 @@ public:
     bool isFound(T key);
     void insertFirst(T newValue);
     void insertBefore(T item, T newValue);
+    void insertAfter(T item, T newValue);
     void insertLast(T newValue);
+    void deleteFirst();
     void deleteItem(T value);
-//----------------------------------------------------------
-// yet to be done
-//    T getFirst();
-//    T getLast();
-//    void deleteFirst();
-//    void deleteLast();
-//    void insertAfter(T item, T newValue)
+    void deleteLast();
+    T  getFirst();
+    T  getLast();
+
 
 };
