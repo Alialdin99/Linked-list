@@ -1,4 +1,4 @@
-# Install script for directory: D:/FCAI/Data structures/linked lists
+# Install script for directory: D:/My projects/Linked-list
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "D:/FCAI/Data structures/linked lists/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "D:/My projects/Linked-list/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "D:/FCAI/Data structures/linked lists/cmake-build-debug",
-		"source" : "D:/FCAI/Data structures/linked lists"
+		"build" : "D:/My projects/Linked-list/cmake-build-debug",
+		"source" : "D:/My projects/Linked-list"
 	},
 	"version" : 
 	{

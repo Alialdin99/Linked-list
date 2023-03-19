@@ -126,14 +126,8 @@ void linked_list<T>::insertLast(T newValue)
 template<typename T>
 void linked_list<T>::deleteItem(T value)
 {
-    if(!isFound(value))
-    {
-        cout<<"The item doesn't exist"<<endl;
-        return;
-    }
-    if(isEmpty())
-    {
-        cout<<"The list is empty"<<endl;
+    if (isEmpty() || !isFound(value)) {
+        cout << "The item doesn't exist or the list is empty" << endl;
         return;
     }
 
