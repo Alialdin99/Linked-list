@@ -9,24 +9,30 @@
 
 using namespace std;
 
-template <typename T>
-class node
-{
-public:
-    T data;
-    node* next;
-};
+
+
+//template <typename T>
+
 
 template <typename T>
 class linked_list
 {
 private:
-    node<T>* head;
+
+    class node
+    {
+    public:
+        T data;
+        node* next;
+
+    };
+    int size;
+    node* head;
 public:
     linked_list();
     bool isEmpty();
     void display();
-    int  size();
+    int  getSize();
     bool isFound(T key);
     void insertFirst(T newValue);
     void insertBefore(T item, T newValue);

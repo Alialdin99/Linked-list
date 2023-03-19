@@ -11,7 +11,7 @@ public:
 class itemNotFound : public std::exception {
 public:
     const char* what() const noexcept override {
-        return "The item doesn't exixt";
+        return "The item doesn't exist";
     }
 };
 
@@ -19,6 +19,7 @@ template<typename t>
 linked_list<t>::linked_list()
 {
     head = nullptr;
+    size = 0;
 }
 
 template<typename T>
@@ -30,7 +31,7 @@ bool linked_list<T>::isEmpty()
 template<typename T>
 void linked_list<T>::display()
 {
-    node<T>* temp = head;
+    node* temp = head;
 
     while(temp != nullptr)
     {
@@ -42,24 +43,15 @@ void linked_list<T>::display()
 }
 
 template<typename T>
-int linked_list<T>::size()
+int linked_list<T>::getSize()
 {
-    int count = 0;
-    node<T>* temp = head;
-
-    while(temp != nullptr)
-    {
-        count++;
-        temp = temp->next;
-    }
-
-    return count;
+    return size;
 }
 
 template<typename T>
 bool linked_list<T>::isFound(T key)
 {
-    node<T>* temp = head;
+    node* temp = head;
 
     while(temp != nullptr)
     {
@@ -76,7 +68,7 @@ bool linked_list<T>::isFound(T key)
 template <typename T>
 void linked_list<T>::insertFirst(T newValue)
 {
-    node<T>* newNode = new node<T>();
+    node* newNode = new node();
     newNode->data = newValue;
 
     if (isEmpty())
@@ -89,6 +81,7 @@ void linked_list<T>::insertFirst(T newValue)
     }
 
     head = newNode;
+    size++;
 }
 
 template<typename T>
@@ -104,8 +97,8 @@ void linked_list<T>::insertBefore(T item, T newValue)
     }
 
 
-    node<T>* newNode = new node<T>();
-    node<T>* temp = head;
+    node* newNode = new node();
+    node* temp = head;
 
     while(temp->next->data != item && temp!= nullptr)
     {
@@ -115,6 +108,7 @@ void linked_list<T>::insertBefore(T item, T newValue)
     newNode->data = newValue;
     newNode->next = temp->next;
     temp->next = newNode;
+    size++;
 
 }
 
@@ -131,8 +125,8 @@ void linked_list<T>::insertAfter(T item, T newValue)
     }
 
 
-    node<T>* newNode = new node<T>();
-    node<T>* temp = head;
+    node* newNode = new node();
+    node* temp = head;
 
     while(temp->next->data == item && temp!= nullptr)
     {
@@ -142,6 +136,7 @@ void linked_list<T>::insertAfter(T item, T newValue)
     newNode->data = newValue;
     newNode->next = temp->next;
     temp->next = newNode;
+    size++;
 
 }
 
@@ -154,8 +149,8 @@ void linked_list<T>::insertLast(T newValue)
         return;
     }
 
-    node<T>* newNode = new node<T>();
-    node<T>* temp = head;
+    node* newNode = new node();
+    node* temp = head;
 
     while(temp->next != nullptr)
     {
@@ -165,6 +160,7 @@ void linked_list<T>::insertLast(T newValue)
     newNode->data = newValue;
     newNode->next = nullptr;
     temp->next = newNode;
+    size++;
 
 }
 
@@ -173,10 +169,11 @@ void linked_list<T>::deleteFirst()
 {
     if(isEmpty()){throw emptyListError();}
 
-    node<T>* delPtr = head;
+    node* delPtr = head;
 
     head = head->next;
     delete delPtr;
+    size--;
 }
 
 template<typename T>
@@ -191,7 +188,7 @@ void linked_list<T>::deleteItem(T value)
         throw itemNotFound();
     }
 
-    node<T>* delPtr = head;
+    node* delPtr = head;
 
     if(head->data == value)
     {
@@ -200,7 +197,7 @@ void linked_list<T>::deleteItem(T value)
     }
     else
     {
-        node<T>* prev;
+        node* prev;
 
         while(delPtr->data != value)
         {
@@ -210,6 +207,7 @@ void linked_list<T>::deleteItem(T value)
 
         prev->next = delPtr->next;
         delete delPtr;
+        size--;
 
     }
 }
@@ -219,17 +217,17 @@ void linked_list<T>::deleteLast()
 {
     if(isEmpty()){throw emptyListError();}
 
-    node<T>* delPtr = head;
-    node<T>* prev;
+    node* delPtr = head;
+    node* prev;
 
     while(delPtr->next != nullptr)
     {
         prev = delPtr;
         delPtr = delPtr->next;
     }
-
-   prev->next = nullptr;
+    prev->next = nullptr;
     delete delPtr;
+    size--;
 
 }
 
@@ -245,7 +243,7 @@ T linked_list<T>::getLast()
 {
     if(isEmpty()){throw emptyListError();}
 
-    node<T>* temp = head;
+    node* temp = head;
 
     while (temp->next != nullptr)
     {
