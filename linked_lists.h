@@ -16,7 +16,6 @@ private:
     public:
         T data;
         node* next;
-
     };
     int size;
     node* head;
